@@ -1,6 +1,5 @@
 package ywd.bean;
 
-import java.util.Random;
 
 public class TestBean {
     private String testStr = "Hello Spring!";

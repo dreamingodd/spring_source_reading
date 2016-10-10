@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:myname="http://www.ywd.com/schema/user"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.ywd.com/schema/user
+           http://www.ywd.com/schema/user.xsd">
 
   <bean id="testBean" class="ywd.bean.TestBean">
   </bean>
 
+  <bean id="argBean" class="ywd.bean.constructorArg.ArgBean">
+    <constructor-arg index="0">
+      <value>Dreamingodd</value>
+    </constructor-arg>
+    <constructor-arg index="1">
+      <value>awesome</value>
+    </constructor-arg>
+  </bean>
+
+  <!-- Alias -->
+  <alias name="testBean" alias="a1"/>
+  <alias name="testBean" alias="a2"/>
+  <!-- 
+  <alias name="a2" alias="a1"/>
+  <alias name="a1" alias="a2"/>
+   -->
+
+  <myname:user id="customBean" userName="ywd" email="ywd@heaven.com"/>
 </beans>
