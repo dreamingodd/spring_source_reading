@@ -8,6 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 
 import ywd.bean.constructorArg.ArgBean;
 import ywd.bean.custom.User;
+import ywd.bean.factoryBean.Car;
 
 public class BeanTest {
 
@@ -34,5 +35,11 @@ public class BeanTest {
         BeanFactory bf = new XmlBeanFactory(new ClassPathResource("beans.xml"));
         User user = (User) bf.getBean("customBean");
         System.out.println(user.getUserName() + " - " + user.getEmail());
+    }
+    @Test
+    public void testFactoryBean() {
+        BeanFactory bf = new XmlBeanFactory(new ClassPathResource("beans.xml"));
+        Car c = (Car) bf.getBean("car");
+        System.out.println(c);
     }
 }

@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:myname="http://www.ywd.com/schema/user"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
            http://www.ywd.com/schema/user
            http://www.ywd.com/schema/user.xsd">
 
@@ -27,5 +27,15 @@
   <alias name="a1" alias="a2"/>
    -->
 
+  <!-- 4.Customized tag parsing -->
   <myname:user id="customBean" userName="ywd" email="ywd@heaven.com"/>
+
+  <!-- 5.1.FactoryBean
+  <bean id="car" class="ywd.bean.factoryBean.CarFactoryBean" carInfo="BMW-500GT,280,980000"></bean>
+   -->
+  <bean id="car" class="ywd.bean.factoryBean.CarFactoryBean">
+    <property name="carInfo" value="BMW,280,980000"></property>
+  </bean>
+
+
 </beans>
