@@ -37,5 +37,33 @@
     <property name="carInfo" value="BMW,280,980000"></property>
   </bean>
 
+  <bean id="constructorCircleTestBeanA" class="ywd.bean.circularDependency.CircleTestA">
+    <constructor-arg index="0" ref="constructorCircleTestBeanB"/>
+  </bean>
+  <bean id="constructorCircleTestBeanB" class="ywd.bean.circularDependency.CircleTestB">
+    <constructor-arg index="0" ref="constructorCircleTestBeanC"/>
+  </bean>
+  <bean id="constructorCircleTestBeanC" class="ywd.bean.circularDependency.CircleTestC">
+    <constructor-arg index="0" ref="constructorCircleTestBeanA"/>
+  </bean>
 
+  <bean id="setterCircleTestBeanA" class="ywd.bean.circularDependency.CircleTestA">
+    <property name="b" ref="setterCircleTestBeanB"/>
+  </bean>
+  <bean id="setterCircleTestBeanB" class="ywd.bean.circularDependency.CircleTestB">
+    <property name="c" ref="setterCircleTestBeanC"/>
+  </bean>
+  <bean id="setterCircleTestBeanC" class="ywd.bean.circularDependency.CircleTestC">
+    <property name="a" ref="setterCircleTestBeanA"/>
+  </bean>
+
+  <bean id="prototypeCircleTestBeanA" class="ywd.bean.circularDependency.CircleTestA" scope="prototype">
+    <property name="b" ref="prototypeCircleTestBeanB"></property>
+  </bean>
+  <bean id="prototypeCircleTestBeanB" class="ywd.bean.circularDependency.CircleTestB" scope="prototype">
+    <property name="c" ref="prototypeCircleTestBeanC"></property>
+  </bean>
+  <bean id="prototypeCircleTestBeanC" class="ywd.bean.circularDependency.CircleTestC" scope="prototype">
+    <property name="a" ref="prototypeCircleTestBeanA"></property>
+  </bean>
 </beans>
