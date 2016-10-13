@@ -66,4 +66,7 @@
   <bean id="prototypeCircleTestBeanC" class="ywd.bean.circularDependency.CircleTestC" scope="prototype">
     <property name="a" ref="prototypeCircleTestBeanA"></property>
   </bean>
+
+  <bean id="awareTest" class="ywd.bean.aware.AwareTest"></bean>
+  <bean id="hello" class="ywd.bean.aware.Hello"></bean>
 </beans>
