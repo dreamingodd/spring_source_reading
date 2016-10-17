@@ -92,5 +92,6 @@
     <property name="username" value="Microsoft"></property>
   </bean>
 
-
+  <!-- 6.6.4.ApplicationEvent test -->
+  <bean id="testListener" class="ywd.bean.listener.TestListener"></bean>
 </beans>

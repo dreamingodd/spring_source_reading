@@ -8,6 +8,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.core.io.ClassPathResource;
 
+import ywd.bean.listener.TestEvent;
+
 public class ContextTest {
     @Test
     public void simpleTest() {
@@ -22,5 +24,13 @@ public class ContextTest {
         // »ò
         ApplicationContext ac = new ClassPathXmlApplicationContext("beans.xml");
         System.out.println(ac.getBean("bfppTestBean"));
+    }
+    @Test
+    public void listenerTest() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
+        TestEvent e1= new TestEvent("hello", "msg");
+        TestEvent e2 = new TestEvent("hello", "stl");
+        context.publishEvent(e1);
+        context.publishEvent(e2);
     }
 }
