@@ -37,6 +37,7 @@
     <property name="carInfo" value="BMW,280,980000"></property>
   </bean>
 
+  <!-- 5.6.2.Circular references in constructor cannot be resolved.
   <bean id="constructorCircleTestBeanA" class="ywd.bean.circularDependency.CircleTestA">
     <constructor-arg index="0" ref="constructorCircleTestBeanB"/>
   </bean>
@@ -46,6 +47,7 @@
   <bean id="constructorCircleTestBeanC" class="ywd.bean.circularDependency.CircleTestC">
     <constructor-arg index="0" ref="constructorCircleTestBeanA"/>
   </bean>
+   -->
 
   <bean id="setterCircleTestBeanA" class="ywd.bean.circularDependency.CircleTestA">
     <property name="b" ref="setterCircleTestBeanB"/>
@@ -69,4 +71,26 @@
 
   <bean id="awareTest" class="ywd.bean.aware.AwareTest"></bean>
   <bean id="hello" class="ywd.bean.aware.Hello"></bean>
+
+  <!-- 6.6.1.使用自定义的BeanFactoryPostProcessor -->
+  <bean id="bfppBean" class="ywd.bean.postProcessor.ObscenityRemovingBeanFactoryPostProcessor">
+    <property name="obscenities">
+      <set>
+        <value>bollocks</value>
+        <value>winky</value>
+        <value>bum</value>
+        <value>Microsoft</value>
+      </set>
+    </property>
+  </bean>
+
+  <bean id="bfppTestBean" class="ywd.bean.postProcessor.BfppTestBean">
+  <!-- 
+   -->
+    <property name="connectionStr" value="bollocks"></property>
+    <property name="password" value="imaginecup"></property>
+    <property name="username" value="Microsoft"></property>
+  </bean>
+
+
 </beans>
