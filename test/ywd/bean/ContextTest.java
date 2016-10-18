@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 
 import ywd.bean.listener.TestEvent;
 
+@SuppressWarnings({"resource", "deprecation","unused"})
 public class ContextTest {
     @Test
     public void simpleTest() {
@@ -32,5 +33,11 @@ public class ContextTest {
         TestEvent e2 = new TestEvent("hello", "stl");
         context.publishEvent(e1);
         context.publishEvent(e2);
+    }
+    @Test
+    public void aopTest() {
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans_aop.xml");
+        TestBean b = (TestBean) context.getBean("testBean");
+        b.test();
     }
 }
